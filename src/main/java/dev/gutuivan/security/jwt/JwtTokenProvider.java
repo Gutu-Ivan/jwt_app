@@ -1,6 +1,7 @@
 package dev.gutuivan.security.jwt;
 
 import dev.gutuivan.model.Role;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +10,10 @@ import java.util.List;
 
 @Component
 public class JwtTokenProvider {
+    @Value("${jwt.token.secret}")
+    private String secret;
+    @Value("${jwt.token.expired}")
+    private long validityInMiliseconds;
 
     public String createToken(String username, List<Role> role){
         return null;
