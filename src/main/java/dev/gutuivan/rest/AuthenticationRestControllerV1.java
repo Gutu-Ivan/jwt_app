@@ -2,8 +2,9 @@ package dev.gutuivan.rest;
 
 import dev.gutuivan.security.jwt.JwtTokenProvider;
 import dev.gutuivan.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,4 +20,8 @@ public class AuthenticationRestControllerV1 {
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;
     }
+    public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto){
+        return null;
+    }
+
 }
