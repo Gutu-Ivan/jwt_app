@@ -1,6 +1,7 @@
 package dev.gutuivan.rest;
 
 
+import dev.gutuivan.dto.UserDto;
 import dev.gutuivan.model.User;
 import dev.gutuivan.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -20,12 +21,14 @@ public class AdminRestControllerV1 {
         this.userService = userService;
     }
 
-    @GetMapping(value = "user/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable(name = "id") Long id){
-        User result = userService.findById(id);
-        if(result == null){
+    @GetMapping(value = "users/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id){
+        User user = userService.findById(id);
+        if(user == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+        UserDto result = UserDto.fromUser(user);
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
